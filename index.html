@@ -415,7 +415,12 @@ button,input{font-family:inherit}
 .av-stamp{white-space:nowrap;font:700 var(--av-fs-0)/1.4 var(--av-mono);letter-spacing:0}
 .av-footer--bar{position:fixed;left:0;right:0;bottom:0;z-index:2147482000;padding:0 var(--av-s-3);height:28px;flex-direction:row;justify-content:center;pointer-events:none;border-top:0;background:rgba(5,8,24,.7)}
 @media (prefers-reduced-motion:reduce){.av-btn,.av-card,.av-back,.av-tab{transition:none!important}.av-card:hover{transform:none}html{scroll-behavior:auto}}
-</style></head>
+</style><style id="teen-vida-20261125">
+.teen-vida{display:block;line-height:0}
+.teen-vida .vida-mini-cv{display:block;width:100%!important;height:auto!important;border-radius:16px;border:2px solid #5BC0FF;box-shadow:0 0 22px rgba(91,192,255,.35);background:#02040c}
+.mascot-btn{width:clamp(84px,14vw,120px)}
+</style>
+</head>
 <body>
 
 <!-- LANDING -->
@@ -432,7 +437,7 @@ button,input{font-family:inherit}
     </nav>
   </div>
   <header class="hero">
-    <button class="mascot-btn" id="mascot-btn" aria-label="Starbot shows a new game"><svg class="mascot" viewBox="0 0 190 170" aria-hidden="true" focusable="false"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE98A"/><stop offset="1" stop-color="#FFB02E"/></linearGradient></defs><ellipse cx="82" cy="160" rx="38" ry="6" fill="#000" opacity=".25"/><g class="body"><path d="M80 6v14" stroke="#FFB02E" stroke-width="5" stroke-linecap="round"/><circle class="antenna-dot" cx="80" cy="6" r="6" fill="#FF7AA8"/><polygon points="80.0,22.0 101.2,54.9 139.0,64.8 114.2,95.1 116.4,134.2 80.0,120.0 43.6,134.2 45.8,95.1 21.0,64.8 58.8,54.9" fill="url(#mg)" stroke="url(#mg)" stroke-width="12" stroke-linejoin="round"/><rect x="56" y="64" width="48" height="34" rx="14" fill="#2B2556"/><ellipse cx="69" cy="80" rx="5" ry="6.5" fill="#5BC0FF"/><ellipse cx="91" cy="80" rx="5" ry="6.5" fill="#5BC0FF"/><circle cx="71" cy="77" r="1.8" fill="#FFF3D9"/><circle cx="93" cy="77" r="1.8" fill="#FFF3D9"/><path d="M72 89q8 6 16 0" fill="none" stroke="#FF7AA8" stroke-width="3.2" stroke-linecap="round"/><ellipse cx="54" cy="96" rx="6" ry="3.5" fill="#FF7AA8" opacity=".55"/><ellipse cx="106" cy="96" rx="6" ry="3.5" fill="#FF7AA8" opacity=".55"/><ellipse cx="66" cy="148" rx="11" ry="6" fill="#FFB02E"/><ellipse cx="96" cy="148" rx="11" ry="6" fill="#FFB02E"/><g class="wave"><path d="M30 92C18 84 14 72 16 58" fill="none" stroke="#FFB02E" stroke-width="9" stroke-linecap="round"/><circle cx="16" cy="54" r="9" fill="#FFE98A" stroke="#FFB02E" stroke-width="3"/></g><g class="point"><path d="M128 96C142 98 150 94 160 90" fill="none" stroke="#FFB02E" stroke-width="9" stroke-linecap="round"/><circle cx="162" cy="90" r="9" fill="#FFE98A" stroke="#FFB02E" stroke-width="3"/><path d="M170 90h12M178 85l6 5-6 5" fill="none" stroke="#FF7AA8" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></button>
+    <button class="mascot-btn" id="mascot-btn" aria-label="Vida shows a new game"><span id="teen-vida" class="teen-vida" aria-hidden="true"></span></button>
     <div class="hero-text">
       <h1 class="hero-title">Teen Zone</h1>
       <p class="landing-sub">Games for ages 15 and up. Pick a world!</p>
@@ -2561,7 +2566,7 @@ if(document.readyState==='complete')start();else addEventListener('load',start);
 addEventListener('resize',sched);})();</script><script id="av-shell-20261124">/* AVIDAA shell: shared header (or floating pill) + footer with the "Last updated" stamp. No outside calls, no tracking.
    Template tokens are replaced when a page is built: Teen Zone --av-games Games and Worlds 2026-11-24 06:35 */
 (function(){
-  var NAME='Teen Zone',SECTOR='--av-games',STAMP='2026-11-24 06:35',HOME='https://avidaa1.github.io/';
+  var NAME='Teen Zone',SECTOR='--av-games',STAMP='2026-11-25 13:51',HOME='https://avidaa1.github.io/';
   var ARROW='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   function build(){
     if(!document.body||document.querySelector('.av-footer'))return;
@@ -2614,5 +2619,431 @@ addEventListener('resize',sched);})();</script><script id="av-shell-20261124">/*
   }
   if(document.readyState==='complete'||document.readyState==='interactive')setTimeout(build,0);else addEventListener('DOMContentLoaded',function(){setTimeout(build,0);});
 })();
-</script></body>
+</script><script id="vida-mini-20261125">/* AVIDAA Vida mini portrait. Face engine adapted from the AEGIS Vida ASCII face v0.4 (3D-lit ASCII face, long hair, green eyes).
+   No chat, no network. window.VidaMini.mount(hostEl, {width:240}) -> controller {setExpr, speak, bench, destroy}. */
+(function () {
+  'use strict';
+  const sm = (a, b, x) => { let t = (x - a) / (b - a); t = t < 0 ? 0 : t > 1 ? 1 : t; return t * t * (3 - 2 * t); };
+  const g = (d, s) => Math.exp(-(d * d) / (s * s));
+  const clamp = (x, a, b) => x < a ? a : x > b ? b : x;
+
+  const K_NONE = 0, K_SKIN = 1, K_HAIR = 2, K_CLOTH = 3, K_SCLERA = 4, K_IRIS = 5, K_LIP = 6, K_TEETH = 7, K_BROW = 8, K_TEAR = 9, K_HEART = 10, K_DARK = 11, K_BLUSH = 12;
+  const R_SKIN = ' .`,:;-~=+*coxzm', R_FEAT = ' .:-=+*cotxzwqdbkhmMW#%@', R_CLOTH = ' .:;-=+x', R_BROW = ' .,-~=+';
+  const HG = [[' ', '.', ':', '!', '|', '|'], [' ', '.', '`', "'", '\\', '\\'], [' ', '.', ',', '/', '/', '/'], [' ', '.', '-', '-', '~', '=']];
+  function mk(fn) { const a = []; for (let i = 0; i < 8; i++) { const L = i / 7, c = fn(L); a.push('rgb(' + (c[0] | 0) + ',' + (c[1] | 0) + ',' + (c[2] | 0) + ')'); } return a; }
+  const COL = [];
+  COL[K_SKIN] = mk(L => [36 + 160 * L, 80 + 175 * L, 46 + 120 * L]);
+  COL[K_BLUSH] = mk(L => [110 + 145 * L, 80 + 140 * L, 60 + 80 * L]);
+  COL[K_HAIR] = mk(L => [45 + 175 * L, 70 + 170 * L, 12 + 48 * L]);
+  COL[K_CLOTH] = mk(L => [45 + 75 * L, 60 + 90 * L, 20 + 25 * L]);
+  COL[K_SCLERA] = mk(L => [80 + 160 * L, 120 + 135 * L, 90 + 140 * L]);
+  COL[K_IRIS] = mk(L => [10 + 70 * L, 150 + 105 * L, 55 + 120 * L]);
+  COL[K_LIP] = mk(L => [110 + 135 * L, 80 + 105 * L, 66 + 80 * L]);
+  COL[K_TEETH] = mk(L => [215 * L + 30, 255 * L, 225 * L + 20]);
+  COL[K_BROW] = mk(L => [18 + 34 * L, 30 + 44 * L, 6 + 12 * L]);
+  COL[K_TEAR] = mk(L => [90 + 60 * L, 190 + 60 * L, 220 + 35 * L]);
+  COL[K_HEART] = mk(L => [255, 70 + 50 * L, 140 + 40 * L]);
+
+  const X0 = -1.0, X1 = 1.0, Y0 = -1.06, Y1 = 1.36;
+  const EX = 0.200, EY = -0.045, S = 0.125, RI = 0.55, MY = 0.378;
+  function faceW(Y) {
+    if (Y < -0.70 || Y > 0.715) return 0;
+    if (Y <= 0.05) { const a = (Y - 0.05) / 0.76; return 0.44 * Math.sqrt(Math.max(0, 1 - a * a)); }
+    const t = (Y - 0.05) / 0.665;
+    let w = 0.44 * (1 - 0.60 * Math.pow(t, 1.7));
+    if (t > 0.74) { const c = (t - 0.74) / 0.26; w *= Math.sqrt(Math.max(0, 1 - Math.pow(c, 2.4))); }
+    return w;
+  }
+  function hairline(X) { return -0.52 + 0.36 * Math.pow(sm(0.05, 0.50, Math.abs(X + 0.08)), 1.8); }
+  function neckW(Y) { return 0.150 + 0.035 * sm(0.82, 1.0, Y); }
+  function sideW(Y) { return 0.63 + 0.05 * Math.sin(Y * 5.0 + 0.5) + 0.06 * sm(0.3, 1.1, Y); }
+  function shoulderY(X) { return 0.955 + 0.17 * Math.pow(Math.abs(X), 1.35); }
+  function neckline(X) { return 1.25 - 1.15 * Math.abs(X); }
+  function hgt(X, Y) {
+    const w = faceW(Y); if (w <= 0) return 0; const a = X / w; if (a * a >= 1) return 0;
+    const vy = Y / 0.80;
+    let z = 0.40 * Math.pow(1 - a * a, 0.55) * (0.5 + 0.5 * Math.sqrt(Math.max(0, 1 - vy * vy)));
+    z += 0.050 * g(X, 0.028) * sm(-0.10, 0.06, Y) * (1 - sm(0.17, 0.22, Y));
+    z += 0.060 * g(Math.hypot(X, Y - 0.175), 0.045);
+    z += 0.022 * (g(Math.hypot(X - 0.045, Y - 0.195), 0.028) + g(Math.hypot(X + 0.045, Y - 0.195), 0.028));
+    z -= 0.028 * (g(Math.hypot((X - EX) / 1.25, Y - EY), 0.085) + g(Math.hypot((X + EX) / 1.25, Y - EY), 0.085));
+    z += 0.020 * g(Y + 0.165, 0.04) * (1 - sm(0.32, 0.42, Math.abs(X)));
+    z += 0.035 * (g(Math.hypot((X - 0.25) / 1.2, Y - 0.08), 0.10) + g(Math.hypot((X + 0.25) / 1.2, Y - 0.08), 0.10));
+    z += 0.030 * g(Math.hypot(X / 1.6, Y - 0.37), 0.07);
+    z -= 0.008 * g(X, 0.012) * g(Y - 0.27, 0.04);
+    z += 0.035 * g(Math.hypot(X / 1.2, Y - 0.60), 0.075);
+    z -= 0.015 * g(Math.hypot(X / 1.5, Y - 0.47), 0.035);
+    return z;
+  }
+  const LX = -0.52, LY = -0.50, LZ = 0.69, LN = Math.hypot(LX, LY, LZ);
+  function skinLum(X, Y, hlY) {
+    const e = 0.006;
+    const zx = (hgt(X + e, Y) - hgt(X - e, Y)) / (2 * e), zy = (hgt(X, Y + e) - hgt(X, Y - e)) / (2 * e);
+    const nl = Math.hypot(zx, zy, 1);
+    const dif = Math.max(0, (-zx * LX - zy * LY + LZ) / (nl * LN));
+    const dif2 = Math.max(0, (-zx * 0.62 + zy * 0.15 + 0.77) / nl);
+    let v = 0.28 + 0.50 * Math.pow(dif, 1.15) + 0.30 * dif2;
+    v *= 1 - 0.30 * g(Math.hypot((X - 0.045) / 1.1, (Y - 0.222) / 0.8), 0.035);
+    v *= 1 - 0.42 * g(Math.hypot((X - 0.03) / 1.3, Y - 0.207), 0.012);
+    v *= 1 - 0.42 * g(Math.hypot((X + 0.03) / 1.3, Y - 0.207), 0.012);
+    v *= 1 - 0.3 * g(Math.hypot(X / 2, Y - 0.465), 0.022);
+    v *= 1 - 0.15 * g(Math.hypot(X - 0.07, Y + 0.05), 0.05);
+    v *= 0.55 + 0.45 * sm(0, 0.09, Y - hlY);
+    v += 0.22 * g(Math.hypot(X + 0.012, Y - 0.165), 0.02);
+    v += 0.10 * g(X + 0.01, 0.012) * sm(-0.05, 0.02, Y) * (1 - sm(0.1, 0.15, Y));
+    v += 0.06 * g(Math.hypot(X + 0.12, Y + 0.33), 0.13);
+    v += 0.07 * g(Math.hypot(X + 0.24, Y - 0.05), 0.07);
+    v += 0.05 * g(Math.hypot(X + 0.03, Y - 0.58), 0.04);
+    v += 0.06 * g(Math.hypot(X + 0.02, Y - 0.30), 0.02);
+    return clamp(v, 0.07, 0.92);
+  }
+
+  const BASE = { eo0: 1, eo1: 1, sq: 0, arc: 0, bi: 0, bo: 0, bt: 0, gx: 0, gy: 0, pu: 1, sm: 0.18, mo: 0, mw: 1, as: 0, pout: 0, blush: 0.1, tear: 0, tilt: 0, teeth: 0, spark: 0 };
+  function E(o) { return Object.assign({}, BASE, o); }
+  const EXPR = {
+    calm: E({}),
+    happy: E({ eo0: 1, eo1: 1, sq: .32, bi: .12, bo: .12, sm: .75, mo: .12, teeth: 1, blush: .45, spark: 1 }),
+    wink: E({ eo0: 1, eo1: 0, arc: 1, sq: .4, sm: .6, as: .4, bt: .2, blush: .3, spark: 1 }),
+    thinking: E({ eo0: .95, eo1: .95, bi: .1, bt: .45, gx: .24, gy: -.2, sm: 0, as: -.3, mw: .8, pout: .4 }),
+    smug: E({ eo0: .68, eo1: .68, sq: .2, bi: -.1, bo: .15, bt: .25, gx: -.15, sm: .35, as: .9 }),
+    shy: E({ eo0: .8, eo1: .8, sq: .3, bi: .3, gx: -.22, gy: .22, sm: .4, mw: .8, blush: 1, tilt: .06 })
+  };
+  const FX = { happy: ['*', '+'], wink: ['*'], thinking: ['.', '..', '...', '?'] };
+
+  function create(host, opts) {
+    opts = opts || {};
+    const reduced = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const cssW = opts.width || 240;
+    const cv = document.createElement('canvas');
+    cv.className = 'vida-mini-cv';
+    cv.setAttribute('aria-hidden', 'true');
+    host.appendChild(cv);
+    const ctx = cv.getContext('2d', { alpha: false });
+    let qScale = 1, W = 0, H = 0, U = 100, cpu = 70, dx = .01, dy = .015, GC = 0, GR = 0, a16 = 9.6, l16 = 15, scl = .2, originX = 0, originY = 0;
+    let kind, base, F, K, hairDir, hairPhase, hairList, span0, span1;
+    const FONT = '16px ui-monospace,Menlo,Consolas,"DejaVu Sans Mono",monospace';
+
+    function setup() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = cssW; U = W / 1.46; originX = W / 2; originY = 0.96 * U; H = Math.round(originY + 1.02 * U);
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      cv.style.width = W + 'px'; cv.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cpu = clamp(U / 3.0, 44, 80) * qScale;
+      ctx.font = FONT;
+      a16 = ctx.measureText('MMMMMMMMMMMMMMMMMMMM').width / 20; l16 = a16 * 1.55;
+      scl = (U / cpu) / a16; dx = 1 / cpu; dy = 1.55 / cpu;
+      GC = Math.ceil((X1 - X0) / dx); GR = Math.ceil((Y1 - Y0) / dy);
+      const N = GC * GR;
+      kind = new Uint8Array(N); base = new Float32Array(N); F = new Float32Array(N); K = new Uint8Array(N);
+      hairDir = new Uint8Array(N); hairPhase = new Float32Array(N); span0 = new Int16Array(GR); span1 = new Int16Array(GR);
+      const hl = [], Px = -0.10, Py = -0.74;
+      for (let j = 0; j < GR; j++) {
+        const Y = Y0 + (j + 0.5) * dy; let s0 = -1, s1 = -1;
+        for (let i = 0; i < GC; i++) {
+          const X = X0 + (i + 0.5) * dx, ax = Math.abs(X), idx = j * GC + i;
+          let k = K_NONE, v = 0;
+          const w = faceW(Y), inFace = w > 0 && ax < w, hlY = hairline(X);
+          if (inFace && Y > hlY) { k = K_SKIN; v = skinLum(X, Y, hlY); }
+          else {
+            const crown = ((X / 0.66) * (X / 0.66) + ((Y + 0.14) / 0.84) * ((Y + 0.14) / 0.84)) < 1 && Y < 0.2;
+            let inner;
+            if (Y < 0.71) inner = Math.max(w * 0.96, Y > 0.56 ? neckW(Y) : 0); else if (Y < 0.95) inner = neckW(Y); else inner = 0.19 + (Y - 0.95) * 0.5;
+            const sides = Y >= -0.25 && Y < 1.25 && ax < sideW(Y) && ax >= inner;
+            const fringe = inFace && Y <= hlY;
+            let isHair = false;
+            if (crown || sides || fringe) {
+              const side = X < 0 ? -1 : 1, wv = sm(-0.1, 0.5, Y);
+              const wave = (0.045 * Math.sin(Y * 6.2 + side * 1.1) + 0.02 * Math.sin(Y * 13 + side * 2)) * wv;
+              const dwave = (0.279 * Math.cos(Y * 6.2 + side * 1.1) + 0.26 * Math.cos(Y * 13 + side * 2)) * wv;
+              const us = (X - wave) * 88, ang = Math.atan2(Y - Py, X - Px), rr = Math.hypot(X - Px, Y - Py);
+              const ws = fringe ? 0 : sm(-0.28, 0.08, Y);
+              const strand = (1 - ws) * Math.sin(ang * 40) + ws * Math.sin(us);
+              let st = 0.5 + 0.5 * strand; st = Math.pow(st, 1.3);
+              const dirR = (X - Px) / Math.max(0.05, Y - Py);
+              const slope = (1 - ws) * dirR + ws * (dwave + side * 0.25 * sm(0.85, 1.2, Y));
+              let d;
+              if (ws < 0.5) { const ca = Math.cos(ang), sa = Math.sin(ang); if (Math.abs(sa) < 0.36) d = 3; else if (Math.abs(ca) < 0.26) d = 0; else d = (ca * sa > 0) ? 1 : 2; }
+              else if (Math.abs(slope) < 0.22) d = 0; else if (Math.abs(slope) > 2.4) d = 3; else d = slope > 0 ? 1 : 2;
+              const h1 = g(rr - 0.40, 0.10) * (0.55 - 0.45 * X / 0.6) * (1 - ws * 0.6);
+              const h2 = g(Y - 0.42 - 0.05 * side, 0.10) * 0.35 * (side < 0 ? 1 : 0.55) * ws;
+              v = (0.30 + 0.46 * st + (h1 + h2) * (0.35 + 0.65 * st)) * (0.90 - 0.22 * X);
+              if (!fringe && Y > -0.2 && Y < 0.75) v *= 0.72 + 0.28 * sm(0, 0.10, ax - w);
+              if (Y > 0.58 && Y < 0.96 && ax < 0.27) v *= 0.5;
+              if (fringe) v *= 1.05;
+              isHair = !(Y > 1.0 && st < sm(1.0, 1.25, Y));
+              if (isHair) { k = K_HAIR; hairDir[idx] = d; hairPhase[idx] = Y * 9 - ax * 4 + st * 2; v = clamp(v, 0.05, 0.98); }
+            }
+            if (!isHair) {
+              const nw = neckW(Y);
+              if (Y > 0.55 && Y < 1.02 && ax < nw) { k = K_SKIN; const a = X / nw; v = (0.20 + 0.5 * Math.sqrt(Math.max(0, 1 - a * a)) * (0.66 - 0.30 * a)) * (0.42 + 0.58 * sm(0.66, 0.90, Y)); }
+              else if (Y >= 0.95 && ax < 0.32 && Y < neckline(X) && Y > shoulderY(X) - 0.03) { k = K_SKIN; v = 0.34 - 0.12 * X + 0.14 * g(Y - (1.03 + 0.05 * ax / 0.3), 0.012) * sm(0.03, 0.08, ax); v *= 0.75 + 0.25 * sm(0, 0.05, neckline(X) - Y); }
+              else if (Y > shoulderY(X)) { k = K_CLOTH; v = 0.24 - 0.12 * X + 0.08 * Math.sin(X * 70 + Y * 30) + 0.2 * g(Y - neckline(X), 0.015) * (ax < 0.32 ? 1 : 0) + 0.15 * g(Y - shoulderY(X), 0.02); v = clamp(v, 0.08, 0.9); }
+            }
+          }
+          kind[idx] = k; base[idx] = v;
+          if (k === K_HAIR) hl.push(idx);
+          if (k) { if (s0 < 0) s0 = i; s1 = i; }
+        }
+        span0[j] = s0; span1[j] = s1;
+      }
+      hairList = new Int32Array(hl);
+    }
+
+    let exprName = 'calm', cur = Object.assign({}, EXPR.calm), manualUntil = 0;
+    const t0 = performance.now();
+    let last = t0, blinkAt = t0 + 1800, dbl = false, look = [0, 0], tgt = [0, 0], nextS = t0 + 800, nextMood = t0 + 7000;
+    let talkUntil = 0, talkText = '', talkStart = 0, pointer = null, pointerT = 0;
+    const floaters = []; let nextFx = 0;
+    function setExprName(k) { if (EXPR[k]) exprName = k; }
+
+    function cellRange(a, b, o, d, n) { let i0 = Math.floor((a - o) / d), i1 = Math.ceil((b - o) / d); return [i0 < 0 ? 0 : i0, i1 > n ? n : i1]; }
+    function drawEyes(t, lidK, gu, gv) {
+      const P = cur, dyS = dy / S, special = exprName;
+      const [j0, j1] = cellRange(EY - 3.1 * S, EY + 0.95 * S, Y0, dy, GR);
+      for (let sI = 0; sI < 2; sI++) {
+        const s = sI ? 1 : -1, ex = s * EX;
+        let o = sI ? P.eo1 : P.eo0; if (o > 0.12) o *= lidK;
+        const bow = (1 - sm(0, 0.35, o)) * (0.14 - 0.40 * P.arc);
+        const [i0, i1] = cellRange(ex - 1.5 * S, ex + 1.5 * S, X0, dx, GC);
+        const ltMin = 0.55 * dyS;
+        for (let j = j0; j < j1; j++) {
+          const Y = Y0 + (j + 0.5) * dy, y = (Y - EY) / S;
+          for (let i = i0; i < i1; i++) {
+            const idx = j * GC + i; if (kind[idx] !== K_SKIN) continue;
+            const X = X0 + (i + 0.5) * dx, u = (X - ex) / S, x = u * s;
+            const q = Math.max(0, 1 - x * x), tc = -0.09 * x;
+            const yu = -o * 0.62 * Math.pow(q, 0.70) + tc + bow * q;
+            const yl = o * 0.40 * q * (1 - 0.55 * P.sq) + tc + 0.03 + bow * q;
+            const gu0 = gu, gv0 = gv;
+            let v = F[idx], k = K_SKIN;
+            if (x > -1.12 && x < 1.42) {
+              const yb = -1.52 - 0.18 * g(x - 0.4, 0.6) + 0.30 * sm(0.5, 1.4, x) + 0.06 * sm(-0.4, -1.1, x) - P.bi * 0.5 * sm(0.5, -1.0, x) - P.bo * 0.5 * sm(-0.5, 1.0, x) - (s > 0 ? P.bt : 0) * 0.35;
+              const th = Math.max(ltMin * 1.4, 0.13 * (1 - 0.6 * sm(0.1, 1.4, x)));
+              const d = Math.abs(y - yb);
+              if (d < th) { k = K_BROW; v = 0.95 - 0.4 * d / th; }
+            }
+            if (k === K_SKIN) {
+              if (x > -1.02 && x < 1.02 && y > yu && y < yl) {
+                k = K_SCLERA; v = 0.82 - 0.22 * x * x - 0.30 * sm(0.22, 0, y - yu);
+                const iu = u - gu0, iv = y - gv0, r = Math.hypot(iu, iv), rp = 0.20 * P.pu + 0.012 * Math.sin(t * 0.9);
+                if (r < RI) {
+                  k = K_IRIS; const th = Math.atan2(iv, iu);
+                  const fib = (0.5 + 0.5 * Math.sin(th * 30 + Math.sin(th * 6 + t * 0.3) * 2 + r * 14)) * (0.5 + 0.5 * Math.sin(th * 72 - r * 30));
+                  v = (0.52 + 0.42 * fib) * (1 - 0.72 * sm(RI * 0.80, RI, r)) * (1 - 0.4 * sm(0.3, 0, y - yu)) + 0.18 * g(r - rp * 1.5, 0.08);
+                  if (r < rp) { k = K_DARK; v = 0; }
+                }
+                const cs = 1 + 0.5 * P.spark * (0.6 + 0.4 * Math.sin(t * 5));
+                if (Math.hypot(iu + 0.17, iv + 0.17) < 0.10 * cs) { k = K_TEETH; v = 1; }
+                else if (Math.hypot(iu - 0.15, iv - 0.13) < 0.055 * cs) { k = K_TEETH; v = 0.85; }
+                v *= sm(1.02, 0.86, Math.abs(x));
+              }
+              const lt = Math.max(ltMin, 0.05 + 0.05 * sm(-0.2, 1, x));
+              if (x > -1.03 && x < 1.03 && Math.abs(y - yu) < lt) { k = K_DARK; v = 0; }
+              else if (x >= 1.0 && x < 1.36 && Math.abs(y - (-0.09 - 0.45 * (x - 1))) < Math.max(ltMin * 0.8, 0.08 * (1 - (x - 1) / 0.36) + 0.025)) { k = K_DARK; v = 0; }
+              else if (k === K_SKIN) {
+                const len = (0.05 + 0.16 * sm(-0.3, 1, x)) * (0.4 + 0.6 * Math.min(1, o + 0.3));
+                if (x > -0.9 && x < 1.15 && y < yu && y > yu - len && Math.sin(x * 24 + (yu - y) * 9) > 0.5) v *= 0.3;
+                else if (o > 0.4 && Math.abs(x) < 0.9 && Math.abs(y - (yu - 0.20 - 0.06 * q)) < Math.max(ltMin * 0.55, 0.035)) v *= 0.78;
+                else if (o > 0.2 && Math.abs(x) < 0.95 && Math.abs(y - yl) < 0.05) v *= 0.78;
+              }
+            }
+            F[idx] = v; K[idx] = k;
+          }
+        }
+      }
+    }
+    function drawMouth(t, talk) {
+      const P = cur, op = clamp(P.mo + talk, 0, 1.1), smv = P.sm;
+      const hw = 0.118 * P.mw * (1 + 0.22 * Math.max(0, smv));
+      const [j0, j1] = cellRange(MY - 0.11, MY + 0.21, Y0, dy, GR), [i0, i1] = cellRange(-hw * 1.14, hw * 1.14, X0, dx, GC);
+      const thin = 1 - 0.25 * Math.max(0, smv), po = 1 + 0.3 * P.pout;
+      for (let j = j0; j < j1; j++) {
+        const Y = Y0 + (j + 0.5) * dy;
+        for (let i = i0; i < i1; i++) {
+          const idx = j * GC + i; if (kind[idx] !== K_SKIN) continue;
+          const X = X0 + (i + 0.5) * dx, mx = X / hw, am = Math.abs(mx); if (am > 1.12) continue;
+          const q = Math.max(0, 1 - mx * mx);
+          const line = MY - 0.050 * smv * mx * mx + 0.016 * smv - 0.028 * P.as * mx * am + 0.006 * g(mx, 0.2);
+          const yu = line - 0.018 * op * q, yl = line + 0.115 * op * Math.pow(q, 0.8);
+          const top = yu - 0.036 * Math.pow(q, 0.55) * (1 - 0.30 * g(mx, 0.17)) * po * thin;
+          const bot = yl + 0.052 * Math.pow(q, 0.7) * po * (1 - 0.2 * Math.max(0, smv));
+          let v = F[idx], k = K_SKIN;
+          if (am < 1) {
+            const gap = yl - yu;
+            if (Y >= top && Y < yu) { k = K_LIP; const u = (Y - top) / (yu - top + 1e-6); v = 0.30 + 0.16 * u + 0.10 * g(mx + 0.3, 0.3) * (1 - u); }
+            else if (Y >= yu && Y <= yl && gap > dy * 0.6) {
+              k = K_DARK; v = 0;
+              if (P.teeth > 0.5 && Y < yu + Math.min(0.036, gap * 0.5)) { k = K_TEETH; v = (i % 4 === 0) ? 0.6 : 0.92; }
+              else if (op > 0.55 && Y > yl - gap * 0.38) { k = K_LIP; v = 0.26; }
+            }
+            else if (Y > yl && Y <= bot) { k = K_LIP; const u = (Y - yl) / (bot - yl + 1e-6); v = 0.40 + 0.30 * Math.sin(Math.PI * u) + 0.32 * g(u - 0.38, 0.2) * g(mx + 0.22, 0.33); }
+            else if (Y > bot) v *= 1 - 0.25 * g(Y - bot - 0.012, 0.012) * q;
+            if (gap <= dy * 0.6 && Math.abs(Y - line) < dy * 0.55) { k = K_LIP; v = 0.08; }
+          } else if (Math.abs(Y - line) < 0.012) v *= 0.55;
+          F[idx] = clamp(v, 0, 1); K[idx] = k;
+        }
+      }
+    }
+    function drawSkinFx() {
+      const P = cur;
+      if (P.blush > 0.03) {
+        const [j0, j1] = cellRange(-0.02, 0.30, Y0, dy, GR);
+        for (let sI = 0; sI < 2; sI++) {
+          const s = sI ? 1 : -1, [i0, i1] = cellRange(s * 0.255 - 0.15, s * 0.255 + 0.15, X0, dx, GC);
+          for (let j = j0; j < j1; j++) {
+            const Y = Y0 + (j + 0.5) * dy;
+            for (let i = i0; i < i1; i++) {
+              const idx = j * GC + i; if (K[idx] !== K_SKIN) continue;
+              const X = X0 + (i + 0.5) * dx;
+              const wgt = g(Math.hypot((Math.abs(X) - 0.255) / 1.3, Y - 0.135), 0.085) * P.blush;
+              if (wgt > ((i * 7 + j * 13) % 16) / 16 * 0.9 + 0.08) { K[idx] = K_BLUSH; F[idx] = Math.min(1, F[idx] + 0.04); }
+            }
+          }
+        }
+      }
+    }
+
+    function update(now, dt) {
+      const t = (now - t0) / 1000;
+      if (!reduced && now > nextMood && now > manualUntil) {
+        const pick = ['calm', 'calm', 'calm', 'happy', 'thinking', 'wink', 'calm', 'smug'];
+        setExprName(pick[Math.floor(Math.random() * pick.length)]); nextMood = now + 7000 + Math.random() * 6000;
+      }
+      if (manualUntil && now > manualUntil && manualUntil !== Infinity && exprName !== 'calm') { setExprName('calm'); manualUntil = 0; }
+      const M = EXPR[exprName], kk = reduced ? 1 : 1 - Math.exp(-dt * 9);
+      for (const key in cur) cur[key] += (M[key] - cur[key]) * kk;
+      let lid = 1;
+      if (!reduced) {
+        const bd = 190, bt = now - blinkAt;
+        if (bt >= 0 && bt < bd) lid = Math.abs(Math.cos(Math.PI * bt / bd));
+        else if (bt >= bd) { if (dbl) { dbl = false; blinkAt = now + 110; } else { dbl = Math.random() < 0.18; blinkAt = now + (dbl ? 110 : 2400 + Math.random() * 3600); } }
+        if (pointer && now - pointerT < 3000) tgt = [clamp(pointer[0] * 0.5, -0.24, 0.24), clamp(pointer[1] * 0.4, -0.16, 0.16)];
+        else if (now > nextS) { tgt = Math.random() < 0.4 ? [0, 0] : [(Math.random() * 2 - 1) * 0.2, (Math.random() * 2 - 1) * 0.11]; nextS = now + 700 + Math.random() * 1900; }
+        const gk = 1 - Math.exp(-dt * 18);
+        look[0] += (tgt[0] - look[0]) * gk; look[1] += (tgt[1] - look[1]) * gk;
+      } else if (pointer) { look[0] = clamp(pointer[0] * 0.5, -0.24, 0.24); look[1] = clamp(pointer[1] * 0.4, -0.16, 0.16); }
+      const gu = clamp(look[0] + cur.gx + (reduced ? 0 : 0.012 * Math.sin(t * 1.7)), -0.3, 0.3), gv = clamp(look[1] + cur.gy + (reduced ? 0 : 0.01 * Math.sin(t * 2.3)), -0.22, 0.24);
+      let talk = 0;
+      if (now < talkUntil) { const i = Math.floor((now - talkStart) / 65), ch = (talkText[i] || ' ').toLowerCase(); talk = /[aeiou]/.test(ch) ? 0.32 + 0.2 * Math.random() : (/[ ,.]/.test(ch) ? 0.02 : 0.14); }
+      F.set(base); K.set(kind);
+      for (let n = 0; n < hairList.length; n++) { const idx = hairList[n]; F[idx] = base[idx] * (1 + (reduced ? 0 : 0.22) * Math.sin(hairPhase[idx] - t * 1.3)); }
+      drawEyes(t, lid, gu, gv); drawMouth(t, talk); drawSkinFx();
+      const fx = FX[exprName];
+      if (!reduced && fx && fx.length && now > nextFx) {
+        nextFx = now + 500 + Math.random() * 700;
+        floaters.push({ x: originX + (0.30 + Math.random() * 0.35) * U * (Math.random() < 0.75 ? 1 : -1), y: originY - (0.45 + Math.random() * 0.35) * U, vx: (Math.random() - 0.3) * 14, vy: -22 - Math.random() * 16, ch: fx[Math.floor(Math.random() * fx.length)], born: now, life: 2200, size: (0.07 + Math.random() * 0.05) * U, col: '#8dffb0' });
+      }
+      return t;
+    }
+    function draw(now, t, dt) {
+      const d = cv.width / W;
+      ctx.setTransform(d, 0, 0, d, 0, 0);
+      ctx.fillStyle = '#02040c'; ctx.fillRect(0, 0, W, H);
+      const P = cur;
+      let tilt = P.tilt + (reduced ? 0 : 0.025 * Math.sin(t * 0.41) + 0.012 * Math.sin(t * 0.97)), bob = reduced ? 0 : 0.006 * U * Math.sin(t * 1.25), swx = reduced ? 0 : 0.004 * U * Math.sin(t * 0.6);
+      if (exprName === 'thinking') tilt += 0.05;
+      ctx.translate(originX + swx, originY + bob); ctx.rotate(tilt); ctx.scale(scl, scl); ctx.translate(X0 * cpu * a16, Y0 * cpu * a16);
+      ctx.font = FONT; ctx.textBaseline = 'top';
+      for (let j = 0; j < GR; j++) {
+        if (span0[j] < 0) continue;
+        const y = j * l16, row = j * GC; let run = '', runCol = null, runX = 0;
+        for (let i = span0[j]; i <= span1[j]; i++) {
+          const idx = row + i, k = K[idx]; let ch = ' ', col = null;
+          if (k && k !== K_DARK) {
+            let v = F[idx]; v = v < 0 ? 0 : v > 0.999 ? 0.999 : v;
+            if (k === K_SKIN || k === K_BLUSH) ch = R_SKIN[(v * 16) | 0];
+            else if (k === K_HAIR) ch = HG[hairDir[idx]][(v * 6) | 0];
+            else if (k === K_CLOTH) ch = R_CLOTH[(v * 8) | 0];
+            else if (k === K_BROW) ch = R_BROW[(v * 7) | 0];
+            else ch = R_FEAT[(v * 24) | 0];
+            if (ch !== ' ') col = COL[k][(v * 8) | 0];
+          }
+          if (ch === ' ') { if (run) run += ' '; continue; }
+          if (col !== runCol) { if (run) { ctx.fillStyle = runCol; ctx.fillText(run, runX, y); } run = ch; runCol = col; runX = i * a16; }
+          else run += ch;
+        }
+        if (run) { ctx.fillStyle = runCol; ctx.fillText(run, runX, y); }
+      }
+      if (exprName !== 'dizzy') {
+        ctx.globalCompositeOperation = 'lighter';
+        for (let sI = 0; sI < 2; sI++) {
+          const o = sI ? P.eo1 : P.eo0; if (o < 0.15) continue;
+          const cx = ((sI ? EX : -EX) - X0) * cpu * a16, cy = (EY - Y0) * cpu * a16, r = S * 1.25 * cpu * a16;
+          const gr = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+          gr.addColorStop(0, 'rgba(60,255,140,' + (0.62 * Math.min(1, o)).toFixed(2) + ')'); gr.addColorStop(0.45, 'rgba(40,255,120,' + (0.24 * Math.min(1, o)).toFixed(2) + ')'); gr.addColorStop(1, 'rgba(40,255,120,0)');
+          ctx.fillStyle = gr; ctx.fillRect(cx - r, cy - r, 2 * r, 2 * r);
+        }
+        ctx.globalCompositeOperation = 'source-over';
+      }
+      ctx.setTransform(d, 0, 0, d, 0, 0);
+      for (let n = floaters.length - 1; n >= 0; n--) {
+        const f = floaters[n], age = now - f.born; if (age > f.life) { floaters.splice(n, 1); continue; }
+        const a = 1 - age / f.life; f.x += f.vx * dt; f.y += f.vy * dt;
+        ctx.globalAlpha = a; ctx.fillStyle = f.col; ctx.font = 'bold ' + f.size.toFixed(1) + 'px ui-monospace,Menlo,Consolas,monospace';
+        ctx.fillText(f.ch, f.x, f.y);
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // ---- loop: only while visible; adaptive quality keeps a frame under ~8 ms
+    let running = false, visible = true, raf = 0, costSum = 0, costN = 0, slowStreak = 0;
+    function frame(now) {
+      if (!running) return;
+      raf = requestAnimationFrame(frame);
+      const dt = Math.min(0.1, (now - last) / 1000); last = now;
+      const c0 = performance.now();
+      const t = update(now, dt); draw(now, t, dt);
+      costSum += performance.now() - c0; costN++;
+      if (costN >= 40) {
+        const avg = costSum / costN; costSum = 0; costN = 0;
+        if (avg > 7.5 && qScale > 0.6) { if (++slowStreak >= 2) { slowStreak = 0; qScale *= 0.85; setup(); } } else slowStreak = 0;
+      }
+    }
+    function renderOnce() { const now = performance.now(); const t = update(now, 0.033); draw(now, t, 0.033); }
+    function start() { if (reduced || running || !visible || document.hidden) return; running = true; last = performance.now(); raf = requestAnimationFrame(frame); }
+    function stop() { running = false; cancelAnimationFrame(raf); }
+    function onPointer(e) {
+      const r = cv.getBoundingClientRect();
+      pointer = [(e.clientX - (r.left + originX)) / U, (e.clientY - (r.top + originY)) / U]; pointerT = performance.now();
+      if (reduced) { renderOnce(); }
+    }
+    window.addEventListener('pointermove', onPointer, { passive: true });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) start(); else stop(); }).observe(cv);
+
+    const api = {
+      canvas: cv,
+      setExpr: function (name, ms) { if (!EXPR[name]) return; setExprName(name); manualUntil = performance.now() + (ms || 2600); nextMood = manualUntil + 4000; if (reduced) renderOnce(); },
+      speak: function (text, ms) { talkText = text; talkStart = performance.now(); talkUntil = talkStart + (ms || text.length * 65); if (reduced) renderOnce(); },
+      bench: function (n) {
+        const a = performance.now(); let c = 0; n = n || 120;
+        for (let i = 0; i < n; i++) { const now = performance.now(); const t = update(now, 0.016); draw(now, t, 0.016); c++; }
+        return { msPerFrame: (performance.now() - a) / c, cells: GC + 'x' + GR, cpu: cpu, size: W + 'x' + H };
+      },
+      size: function () { return [W, H]; },
+      destroy: function () { stop(); window.removeEventListener('pointermove', onPointer); cv.remove(); }
+    };
+    setup();
+    renderOnce();
+    cv.addEventListener('pointerenter', function () { api.setExpr('happy', 2600); });
+    let tapI = 0; const TAPS = ['wink', 'thinking', 'happy', 'calm'];
+    cv.addEventListener('pointerdown', function () { api.setExpr(TAPS[tapI++ % TAPS.length], 2800); blinkAt = performance.now(); });
+    start();
+    return api;
+  }
+  window.VidaMini = { mount: create };
+})();
+</script>
+<script id="teen-vida-mount-20261125">
+(function(){var host=document.getElementById('teen-vida');if(!host||!window.VidaMini)return;
+var small=innerWidth<760||(window.matchMedia&&matchMedia('(pointer: coarse)').matches),ctl=null;
+try{ctl=VidaMini.mount(host,{width:small?84:112});}catch(e){return;}
+var bt=document.getElementById('bubble-text');
+function say(){try{if(ctl&&bt&&!document.hidden)ctl.speak((bt.textContent||'').slice(0,60),1800);}catch(e){}}
+setTimeout(say,1200);setInterval(say,9000);
+var mb=document.getElementById('mascot-btn');if(mb)mb.addEventListener('click',function(){try{ctl.setExpr('happy');setTimeout(function(){ctl.setExpr('calm');},1200);}catch(e){}});
+})();
+</script>
+</body>
 </html>
